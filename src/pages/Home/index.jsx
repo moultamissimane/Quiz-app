@@ -16,7 +16,7 @@ const Home = () => {
 
   const RegisterToStore = (e) => {
     e.preventDefault();
-    console.log(e.target)
+    // console.log(e.target)
     const firstName = e.target.firstName.value;
     const lastName = e.target.lastName.value;
     const email = e.target.email.value;
