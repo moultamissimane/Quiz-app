@@ -1,10 +1,12 @@
 import { configureStore, ThunkAction, Action } from "@reduxjs/toolkit";
+import questionsSlice from "./questions/questionsSlice";
 import userSlice from "./user/userSlice";
 
 export function makeStore() {
   return configureStore({
     reducer: {
       user: userSlice,
+      questions: questionsSlice,
     },
   });
 }

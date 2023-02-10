@@ -2,16 +2,29 @@ import { Button, FormGroup, Input } from "@mui/material";
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setUser } from "../../app/features/user/userSlice";
+import { setQuestions } from "../../app/features/questions/questionsSlice";
+import { useNavigate } from "react-router-dom";
+import useAxios from "../../hooks/fetcher";
+import { useEffect } from "react";
 
-const Questions = () => {
+const Home = () => {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.user);
+  const Navigation = useNavigate();
+  const url = import.meta.env.VITE_API_ENDPOINT;
+  const { response, error, loading } = useAxios(url);
+
   const RegisterToStore = (e) => {
     e.preventDefault();
+    console.log(e.target)
     const firstName = e.target.firstName.value;
     const lastName = e.target.lastName.value;
     const email = e.target.email.value;
-    dispatch(setUser({ firstName, lastName, email }));
+    dispatch(setUser({ firstName, lastName, email , questions:[], score:0 }));
+    if(response){
+      dispatch(setQuestions(response?.results));
+      Navigation("/questions/1");
+    }
   };
 
   return (
@@ -23,7 +36,7 @@ const Questions = () => {
         </h1>
         <div className="flex justify-center items-center">
           <div className="w-1/2">
-            <FormGroup
+            <form
               onSubmit={RegisterToStore}
               className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4"
             >
@@ -67,17 +80,13 @@ const Questions = () => {
                   type="email"
                   placeholder="Email"
                 />
-                {/* <button
-                  className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-                  type="submit"
-                >
-                  Register
-                </button> */}
-                <Button variant="contained" type="submit">
+                <Button variant="contained"
+                className="w-full"
+                type="submit">
                   Register
                 </Button>
               </div>
-            </FormGroup>
+            </form>
           </div>
         </div>
       </div>
@@ -85,4 +94,4 @@ const Questions = () => {
   );
 };
 
-export default Questions;
+export default Home;

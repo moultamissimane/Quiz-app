@@ -1,12 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 
-// const fetchQuestions = async () => {
-//   const { data } = await axios.get(import.meta.env.VITE_API_ENDPOINT + "/home");
-//   return data;
-// };
-
-const useAxios = ({ url }) => {
+const useAxios = ( url ) => {
   const [response, setResponse] = useState(null);
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(true);
@@ -14,8 +9,11 @@ const useAxios = ({ url }) => {
   useEffect(() => {
     const fetchData = () => {
       axios
-        .get(import.meta.env.VITE_API_ENDPOINT + "/home")
-        .then((res) => setResponse(res.data))
+        .get( url)
+        .then((res) =>{
+          console.log(res.data)   
+           setResponse(res.data)
+          })
         .catch((err) => setError(err))
         .finally(() => setLoading(false));
     };
