@@ -3,7 +3,6 @@ import React, { useEffect } from "react";
 import { useSelector } from "react-redux/es";
 import { useParams, useNavigate } from "react-router";
 import { setQuestion } from "../../app/features/user/userSlice";
-import useAxios from "../../hooks/fetcher";
 import { useDispatch } from "react-redux";
 import { Button } from "@mui/material";
 
