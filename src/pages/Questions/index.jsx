@@ -5,7 +5,7 @@ import { useParams, useNavigate } from "react-router";
 import { setQuestion } from "../../app/features/user/userSlice";
 import { useDispatch } from "react-redux";
 import { Button } from "@mui/material";
-import useAxios from "../../hooks/fetcher";
+import useAxios from "../../hooks/Fetcher";
 
 const Questions = () => {
   let { id } = useParams();
