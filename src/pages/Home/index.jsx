@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { setUser } from "../../app/features/user/userSlice";
 import { setQuestions } from "../../app/features/questions/questionsSlice";
 import { useNavigate } from "react-router-dom";
-import useAxios from "../../hooks/fetcher";
+import useAxios from "../../hooks/Fetcher";
 import { useEffect } from "react";
 
 const Home = () => {
