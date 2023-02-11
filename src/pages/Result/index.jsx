@@ -70,7 +70,7 @@ const Result = () => {
           variant="contained"
           color="primary"
           className="w-1/2 self-center my-5"
-          onClick={() => navigate("/Home")}
+          onClick={() => navigate("/")}
         >
           Back To Home
         </Button>
