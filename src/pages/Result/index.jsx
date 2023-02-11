@@ -5,7 +5,6 @@ import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { setScore } from "../../app/features/user/userSlice";
-// import { useHistory } from "react-router";
 
 const Result = () => {
   const dispatch = useDispatch();
